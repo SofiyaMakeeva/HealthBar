@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private UnityEvent _onChangeHealth;
+
     public float CurrentHealth { get; private set; }
     public float MinHealth { get; private set; } = 0;
     public float MaxHealth { get; private set; } = 100;
@@ -22,6 +25,8 @@ public class Health : MonoBehaviour
         _newHealth = CurrentHealth + _changeHealthValue;
 
         CurrentHealth = Mathf.Clamp(_newHealth, MinHealth, MaxHealth);
+
+        _onChangeHealth?.Invoke();
     }
 
     public void TakeDamage()
@@ -29,5 +34,7 @@ public class Health : MonoBehaviour
         _newHealth = CurrentHealth - _changeHealthValue;
 
         CurrentHealth = Mathf.Clamp(_newHealth, MinHealth, MaxHealth);
+
+        _onChangeHealth?.Invoke();
     }
 }
