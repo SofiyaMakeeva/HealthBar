@@ -6,22 +6,29 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] private Slider _sliderHealth;
-    [SerializeField] private HealthChange _playerHealth;
+    [SerializeField] private Health _playerHealth;
 
-    private float _duration = 15;
+    private float _duration = 5;
 
     private void Start()
     {
-        _sliderHealth.value = _playerHealth.CurrentHealth;
         _sliderHealth.minValue = _playerHealth.MinHealth;
         _sliderHealth.maxValue = _playerHealth.MaxHealth;
+        _sliderHealth.value = _playerHealth.CurrentHealth;
     }
 
-    private void Update()
+    public void OnChangeHealth()
     {
-        if (_sliderHealth.value != _playerHealth.CurrentHealth)
+        StartCoroutine(ChangeHealthUI());
+    }
+
+    private IEnumerator ChangeHealthUI()
+    {
+        while (_playerHealth.CurrentHealth != _sliderHealth.value)
         {
             _sliderHealth.value = Mathf.MoveTowards(_sliderHealth.value, _playerHealth.CurrentHealth, _duration * Time.deltaTime);
+
+            yield return null;
         }
     }
 }

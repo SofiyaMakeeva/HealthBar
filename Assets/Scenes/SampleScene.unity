@@ -207,8 +207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 354095133}
-        m_TargetAssemblyTypeName: HealthChange, Assembly-CSharp
-        m_MethodName: HitOnClick
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: TakeDamage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -376,8 +376,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 354095133}
-        m_TargetAssemblyTypeName: HealthChange, Assembly-CSharp
-        m_MethodName: HealOnClick
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: Heal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderHealth: {fileID: 1314125345}
-  _playerHealth: {fileID: 0}
+  _playerHealth: {fileID: 354095133}
 --- !u!1 &354095129
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb05ddee9d174be44a36bc46b9621e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthDisplay: {fileID: 289302981}
 --- !u!1 &484512092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1213,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 26.9
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
