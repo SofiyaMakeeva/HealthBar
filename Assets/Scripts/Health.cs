@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _onChangeHealth;
+    [SerializeField] private UnityEvent _healthChanged;
 
     public float CurrentHealth { get; private set; }
     public float MinHealth { get; private set; } = 0;
@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
         CurrentHealth = Mathf.Clamp(_newHealth, MinHealth, MaxHealth);
 
-        _onChangeHealth?.Invoke();
+        _healthChanged?.Invoke();
     }
 
     public void TakeDamage()
@@ -35,6 +35,6 @@ public class Health : MonoBehaviour
 
         CurrentHealth = Mathf.Clamp(_newHealth, MinHealth, MaxHealth);
 
-        _onChangeHealth?.Invoke();
+        _healthChanged?.Invoke();
     }
 }
