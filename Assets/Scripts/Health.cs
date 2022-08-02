@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    //[SerializeField] private HealthDisplay _healthDisplay;
     public float CurrentHealth { get; private set; }
     public float MinHealth { get; private set; } = 0;
     public float MaxHealth { get; private set; } = 100;
