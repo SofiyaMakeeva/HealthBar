@@ -17,7 +17,17 @@ public class HealthDisplay : MonoBehaviour
         _sliderHealth.value = _playerHealth.CurrentHealth;
     }
 
-    public void OnChangeHealth()
+    private void OnEnable()
+    {
+        _playerHealth.HealthChanged += OnChangeHealth;
+    }
+
+    private void OnDisable()
+    {
+        _playerHealth.HealthChanged -= OnChangeHealth;
+    }
+
+    private void OnChangeHealth()
     {
         StartCoroutine(ChangeHealthUI());
     }
