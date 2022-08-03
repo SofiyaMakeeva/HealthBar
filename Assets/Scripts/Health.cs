@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public UnityAction HealthChanged;
+    public event UnityAction HealthChanged;
 
     public float CurrentHealth { get; private set; }
     public float MinHealth { get; private set; } = 0;
